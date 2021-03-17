@@ -10,6 +10,5 @@ namespace GameProject
         void Update(Gamer gamer);
         void Delete(Gamer gamer);
 
-
     }
 }

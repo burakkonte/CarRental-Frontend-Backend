@@ -11,5 +11,6 @@ namespace GameProject
         public string LastName { get; set; }
         public int BirthYear { get; set; }
         public long IdentityNumber { get; set; }
+
     }
 }
