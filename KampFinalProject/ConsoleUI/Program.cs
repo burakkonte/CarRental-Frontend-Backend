@@ -12,7 +12,7 @@ namespace ConsoleUI
         static void Main(string[] args)
         {
             //Data Transformation Object
-            ProductTest();
+            CarDetails();
             //IoC 
             //CategoryTest();
         }
@@ -26,26 +26,28 @@ namespace ConsoleUI
             }
         }
 
-        private static void ProductTest()
+        private static void CarDetails()
         {
-            ProductManager productManager = new ProductManager(new EfProductDal()
-                ,new CategoryManager(new EfCategoryDal()));
+            CarManager carManager = new CarManager(new EfCarDal());
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            ColorManager colorManager = new ColorManager(new EfColorDal());
 
-            var result = productManager.GetProductDetails();
+            var result = carManager.GetCarDetails();
 
-            if (result.Success==true)
+            if (result.Success == true)
             {
-                foreach (var product in result.Data)
+                Console.WriteLine("****************ARABA LİSTESİ****************");
+                foreach (var car in result.Data)
                 {
-                    Console.WriteLine(product.ProductName + "/" + product.CategoryName);
+                    Console.WriteLine(car.CarName + " / " + car.DailyPrice);
+                    Console.WriteLine(
+                        "---------------------------------------------------------------------------------------");
                 }
             }
             else
             {
                 Console.WriteLine(result.Message);
             }
-
-            
         }
     }
 }

@@ -6,16 +6,16 @@ using System.Text;
 
 namespace Business.ValidationRules.FluentValidation
 {
-    public class ProductValidator : AbstractValidator<Product>
+    public class ProductValidator : AbstractValidator<Car>
     {
         public ProductValidator()
         {
-            RuleFor(p => p.ProductName).NotEmpty();
-            RuleFor(p => p.ProductName).MinimumLength(2);
-            RuleFor(p => p.UnitPrice).NotEmpty();
-            RuleFor(p => p.UnitPrice).GreaterThan(0);
-            RuleFor(p => p.UnitPrice).GreaterThanOrEqualTo(10).When(p => p.CategoryId == 1);
-            RuleFor(p => p.ProductName).Must(StartWithA).WithMessage("Ürünler A harfi ile başlamalı");
+            RuleFor(p => p.CarName).NotEmpty();
+            RuleFor(p => p.CarName).MinimumLength(2);
+            RuleFor(p => p.DailyPrice).NotEmpty();
+            RuleFor(p => p.DailyPrice).GreaterThan(0);
+           
+            RuleFor(p => p.CarName).Must(StartWithA).WithMessage("Ürünler A harfi ile başlamalı");
 
         }
 
